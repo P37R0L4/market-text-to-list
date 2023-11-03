@@ -9,7 +9,17 @@ import SwiftUI
 
 struct NearMarketsView: View {
     var body: some View {
-        Text("Markets")
+        NavigationView {
+            Text("Markets")
+                .navigationTitle("Near markets")
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button {} label: {
+                            Text("Done")
+                        }
+                    }
+                }
+        }
     }
 }
 

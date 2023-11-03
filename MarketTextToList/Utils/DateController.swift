@@ -7,13 +7,12 @@
 
 import Foundation
 
-class ListViewController {
+class DateController {
     
-    public let timestampFormat: DateFormatter = {
-        let formatter = DateFormatter()        
-        formatter.dateStyle = .short
-        formatter.timeStyle = .medium
+    public func timestampFormat(_ format: String) -> String {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = format
         
-        return formatter
-    }()
+        return dateformat.string(from: self)
+    }
 }

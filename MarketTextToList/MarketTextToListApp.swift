@@ -10,9 +10,6 @@ import Firebase
 
 @main
 struct MarketTextToListApp: App {
-    let persistenceController = PersistenceController.shared
-    
-    // register app delegate for Firebase setup
     @StateObject var firestoreManager = FirestoreManager()
     
     init() {
@@ -22,8 +19,15 @@ struct MarketTextToListApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(firestoreManager)
         }
+    }
+}
+
+extension Date {
+    func getFormattedDate(format: String) -> String {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = format
+        return dateformat.string(from: self)
     }
 }

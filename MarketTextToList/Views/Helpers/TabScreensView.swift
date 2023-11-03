@@ -8,38 +8,21 @@
 import SwiftUI
 
 struct TabScreensView: View {
-    enum FilterType {
-        case list, newCard, markets
-    }
-    
     var body: some View {
-        NavigationView {
-            switch filter {
-            case .list:
-                ListView()
-                    .navigationTitle(title)
-            case .markets:
-                NearMarketsView()
-                    .navigationTitle(title)
-            case .newCard:
-                NewPurchases()
-                    .navigationTitle(title)
-            }
-        }
-    }
-    
-    let filter: FilterType
-    
-    var title: String {
         switch filter {
         case .list:
-            return "Shopping lists"
+            ListView()
+            
         case .markets:
-            return "Near markets"
+            NearMarketsView()
+                .navigationTitle(title)
         case .newCard:
-            return "New Purchases"
+            NewPurchases()
+                .navigationTitle(title)
         }
     }
+    
+    
 }
 
 #Preview {

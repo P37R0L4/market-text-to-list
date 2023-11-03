@@ -11,17 +11,12 @@ import CoreData
 struct ContentView: View {
     var body: some View {
         TabView {
-            TabScreensView(filter: .list)
+            ListView()
                 .tabItem {
                     Label("List", systemImage: "list.bullet.clipboard")
                 }
             
-            TabScreensView(filter: .markets)
-                .tabItem {
-                    Label("Markets", systemImage: "house")
-                }
-            
-            TabScreensView(filter: .newCard)
+            NewPurchases()
                 .tabItem {
                     Label("New", systemImage: "square.and.pencil")
                 }
@@ -35,5 +30,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    ContentView()
+        .environmentObject(FirestoreManager())
 }

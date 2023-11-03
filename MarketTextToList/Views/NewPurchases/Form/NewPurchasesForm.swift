@@ -81,6 +81,7 @@ struct NewPurchasesForm: View {
         }
         .alert("Add item to shopping list", isPresented: $showAddShoppngList) {
             TextField("Enter the item here", text: $addShoppingListText)
+            
             Button("Add", role: .destructive, action: {
                 addItem(nameItem: addShoppingListText)
             })

@@ -1,5 +1,17 @@
 {
   "sourceLanguage" : "en",
-  "strings" : {},
+  "strings" : {
+    "hello_world" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello World"
+          }
+        }
+      }
+    }
+  },
   "version" : "1.0"
 }
