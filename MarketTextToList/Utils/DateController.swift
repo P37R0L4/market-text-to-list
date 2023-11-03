@@ -9,7 +9,7 @@ import Foundation
 
 class ListViewController {
     
-    public let itemFormatter: DateFormatter = {
+    public let timestampFormat: DateFormatter = {
         let formatter = DateFormatter()        
         formatter.dateStyle = .short
         formatter.timeStyle = .medium
