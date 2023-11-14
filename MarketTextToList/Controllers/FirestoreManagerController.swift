@@ -11,7 +11,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import MapKit
 
-class FirestoreManager: ObservableObject {
+class FirestoreManagerController: ObservableObject {
     @Published var shopping = [ShoppingCard]()
     
     func fetchShopping(document: String) {
@@ -64,7 +64,7 @@ class FirestoreManager: ObservableObject {
                 let date = data["data"] as? Date ?? Date()
                 let firstPurchase = data["firstPurchase"] as? Bool ?? true
                 let isFavorite = data["isFavorite"] as? Bool ?? true
-                let itemArr = data["items"] as? [Items] ?? []
+                let itemArr = data["items"] as? [Items]
                 let shareWith = data["shareWith"] as? String ?? ""
                 let amount = data["amount"] as? Int ?? 0
                 let localization = data["localization"] as? GeoPoint ?? GeoPoint(latitude: 51.5074, longitude: 0.12780)
