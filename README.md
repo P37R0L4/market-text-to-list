@@ -2,4 +2,5 @@
 
 ## This app is a text reading test using the camera
 
-#In Progress and stopped (Ignore code organization)
+> [!WARNING]  
+> In progress ignore code organization and debug erros.
