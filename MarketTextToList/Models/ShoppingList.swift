@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import MapKit
-import Firebase
 
 struct Items: Hashable, Codable {
     let item: String
@@ -15,14 +13,10 @@ struct Items: Hashable, Codable {
 }
 
 struct ShoppingCard: Hashable, Codable {
-    var documentID: String = ""
+    let documentID: String
     let title: String
     let data: Date
-    let firstPurchase: Bool
-    let items: [Items]
-    let shareWith: String
+    var items: [Items]
     let amount: Int
     let isFavorite: Bool
-    
-    var localization: GeoPoint
 }

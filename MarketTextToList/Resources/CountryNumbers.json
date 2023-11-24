@@ -1,5 +1,14 @@
 
 [{
+    "id": "0236",
+    "name": "Brazil",
+    "flag": "🇧🇷",
+    "code": "BR",
+    "dial_code": "+55",
+    "pattern": "## # #### ####",
+    "limit": 17
+},
+{
     "id": "0232",
     "name": "Ukraine",
     "flag": "🇺🇦",

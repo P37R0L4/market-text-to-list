@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ConfirmButtonView: View {
+struct PasswordInputView: View {
     @Environment(\.colorScheme) var colorScheme
     
     @Binding var text: String
@@ -52,5 +52,5 @@ struct ConfirmButtonView: View {
 }
 
 #Preview {
-    ConfirmButtonView(text: .constant(""))
+    PasswordInputView(text: .constant(""))
 }

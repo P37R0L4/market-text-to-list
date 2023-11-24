@@ -10,29 +10,30 @@ import Combine
 
 struct PhoneNumberView: View {
     @State var presentSheet = false
-    @State var countryCode : String = "+1"
-    @State var countryFlag : String = "🇺🇸"
-    @State var countryPattern : String = "### ### ####"
+    @State var countryCode : String = "+55"
+    @State var mobPhoneNumber: String = ""
+    @State var countryFlag : String = "🇧🇷"
+    @State var countryPattern : String = "## # ### ####"
     @State var countryLimit : Int = 17
-    @State var mobPhoneNumber = ""
     @State private var searchCountry: String = ""
     @Environment(\.colorScheme) var colorScheme
     @FocusState private var keyIsFocused: Bool
     
-    @Binding var pageIndex: OnboardingIndex
+    @Binding var completePhoneNumber: String
+    @Binding var pushToPassword: Bool = false
     
     let counrties: [CPData] = Bundle.main.decode("CountryNumbers.json")
     
     var body: some View {
         GeometryReader { geo in
             let hasHomeIndicator = geo.safeAreaInsets.bottom > 0
+            
             NavigationStack {
                 VStack {
-                    
-                    Text("Confirm country code and enter phone number")
-                        .multilineTextAlignment(.center)
-                        .font(.title).bold()
-                        .padding(.top, hasHomeIndicator ? 70 : 20)
+                    TitleOnboadingView(
+                        hasHomeIndicator: hasHomeIndicator,
+                        text: "Confirm country code and enter phone number"
+                    )
                     
                     HStack {
                         Button {
@@ -43,7 +44,7 @@ struct PhoneNumberView: View {
                                 .padding(10)
                                 .frame(minWidth: 80, minHeight: 47)
                                 .background(backgroundColor, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-                                .foregroundColor(foregroundColor)
+                                .foregroundColor(.secondary)
                         }
                         
                         TextField("", text: $mobPhoneNumber)
@@ -52,7 +53,7 @@ struct PhoneNumberView: View {
                                     .foregroundColor(.secondary)
                             }
                             .focused($keyIsFocused)
-                            .keyboardType(.numbersAndPunctuation)
+                            .keyboardType(.phonePad)
                             .onReceive(Just(mobPhoneNumber)) { _ in
                                 applyPatternOnNumbers(&mobPhoneNumber, pattern: countryPattern, replacementCharacter: "#")
                             }
@@ -64,7 +65,7 @@ struct PhoneNumberView: View {
                     .padding(.bottom, 15)
                     
                     Button {
-                        // Move to the next step
+                        buttonAction()
                     } label: {
                         Text("Next")
                     }
@@ -75,7 +76,6 @@ struct PhoneNumberView: View {
                 .padding(.horizontal)
                 
                 Spacer()
-                
             }
             .onTapGesture {
                 hideKeyboard()
@@ -108,6 +108,15 @@ struct PhoneNumberView: View {
             .presentationDetents([.medium, .large])
         }
         .ignoresSafeArea(.keyboard)
+        
+        
+    }
+    
+    func buttonAction () {
+        let trimCountryCode = countryCode.replacingOccurrences(of: "+", with: "")
+        let trimNumber = mobPhoneNumber.replacingOccurrences(of: " ", with: "")
+        completePhoneNumber = "\(trimCountryCode)\(trimNumber)"
+        pushToPassword = true
     }
     
     var filteredResorts: [CPData] {
@@ -115,14 +124,6 @@ struct PhoneNumberView: View {
             return counrties
         } else {
             return counrties.filter { $0.name.contains(searchCountry) }
-        }
-    }
-    
-    var foregroundColor: Color {
-        if colorScheme == .dark {
-            return Color(.white)
-        } else {
-            return Color(.black)
         }
     }
     
@@ -136,6 +137,7 @@ struct PhoneNumberView: View {
     
     func applyPatternOnNumbers(_ stringvar: inout String, pattern: String, replacementCharacter: Character) {
         var pureNumber = stringvar.replacingOccurrences( of: "[^0-9]", with: "", options: .regularExpression)
+        
         for index in 0 ..< pattern.count {
             guard index < pureNumber.count else {
                 stringvar = pureNumber
@@ -153,11 +155,21 @@ struct PhoneNumberView: View {
 struct PhoneNumberView_Previews: PreviewProvider {
     static var previews: some View {
         PhoneNumberView(
-            countryCode: "+1",
-            countryFlag: "🇺🇸",
-            countryPattern: "### ### ####",
+            countryCode: "+55",
+            countryFlag: "🇧🇷",
+            countryPattern: "## # #### ####",
             countryLimit: 17,
-            pageIndex: .constant(.phone)
+            completePhoneNumber: .constant("")
         )
+        .preferredColorScheme(.dark)
+        
+        PhoneNumberView(
+            countryCode: "+55",
+            countryFlag: "🇧🇷",
+            countryPattern: "## # #### ####",
+            countryLimit: 17,
+            completePhoneNumber: .constant("")
+        )
+        .preferredColorScheme(.light)
     }
 }
