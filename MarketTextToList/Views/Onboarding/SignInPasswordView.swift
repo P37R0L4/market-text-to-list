@@ -11,7 +11,7 @@ import Combine
 struct SignInPasswordView: View {
     @State var password: String = ""
     @State var showHomeView: Bool = false
-    @State var userData: Onboarding!
+    @State var userData: OnboardingData!
     @Binding var completePhoneNumber: String
     
     var body: some View {
@@ -25,7 +25,25 @@ struct SignInPasswordView: View {
                         text: "Confirm your password"
                     )
                     
-                    PasswordInputView(text: $password)
+                    VStack {
+                        SecureField("", text: $password)
+                            .placeholder(when: password.isEmpty) {
+                                Text("Password")
+                                    .foregroundColor(.secondary)
+                            }
+                            .keyboardType(.default)
+                    }
+                    .padding(10)
+                    .frame(minWidth: 80, minHeight: 47)
+                    .background(
+                        backgroundColor,
+                        in: RoundedRectangle(
+                            cornerRadius: 10,
+                            style: .continuous)
+                    )
+                    .keyboardType(.numberPad)
+                    .padding(.top, 20)
+                    .padding(.bottom, 15)
                     
                     Button {
                         handleLogin()

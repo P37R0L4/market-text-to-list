@@ -8,13 +8,19 @@
 import Foundation
 import Firebase
 
-class FirestoreOnboarding: ObservableObject {    
-    func fetchSignIn(number: String, password: String, completion: @escaping (Onboarding) -> ()) {
+struct OnboardingData: Codable {
+    let lists: [String]
+    let name: String
+    let password: String
+}
+
+class FirestoreOnboarding: ObservableObject {
+    func fetchSignIn(number: String, password: String, completion: @escaping (OnboardingData) -> ()) {
         let db = Firestore.firestore()
         let docRef = db.collection("Users").document(number)
-        let errorHandler: Onboarding = Onboarding(lists: [], name: "error", password: "")
+        let errorHandler: OnboardingData = OnboardingData(lists: [], name: "error", password: "")
         
-        docRef.getDocument(as: Onboarding.self) { result in
+        docRef.getDocument(as: OnboardingData.self) { result in
             switch result {
             case .success(let user):
                 if password == user.password {

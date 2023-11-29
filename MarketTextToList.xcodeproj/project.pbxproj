@@ -11,13 +11,10 @@
 		DB03F5642AD718A600548166 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB03F5632AD718A600548166 /* ContentView.swift */; };
 		DB03F5662AD718A700548166 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB03F5652AD718A700548166 /* Assets.xcassets */; };
 		DB03F5692AD718A700548166 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB03F5682AD718A700548166 /* Preview Assets.xcassets */; };
-		DB03F56E2AD718A700548166 /* MarketTextToList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB03F56C2AD718A700548166 /* MarketTextToList.xcdatamodeld */; };
 		DB03F5782AD71DA100548166 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB03F5772AD71DA100548166 /* ListView.swift */; };
 		DB0950F22AF737AF006DAF45 /* FirestoreOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0950F12AF737AF006DAF45 /* FirestoreOnboarding.swift */; };
-		DB0950F42AF73E4E006DAF45 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0950F32AF73E4D006DAF45 /* Onboarding.swift */; };
-		DB0950F62AF745DD006DAF45 /* CPData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0950F52AF745DD006DAF45 /* CPData.swift */; };
 		DB0950FA2AF746A3006DAF45 /* CountryNumbers.json in Resources */ = {isa = PBXBuildFile; fileRef = DB0950F92AF746A3006DAF45 /* CountryNumbers.json */; };
-		DB0950FE2AF74742006DAF45 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0950FD2AF74742006DAF45 /* Decoder.swift */; };
+		DB0950FE2AF74742006DAF45 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0950FD2AF74742006DAF45 /* Bundle.swift */; };
 		DB0951012AF74797006DAF45 /* PhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0951002AF74797006DAF45 /* PhoneNumberView.swift */; };
 		DB0951062AF74B29006DAF45 /* SignInPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0951052AF74B29006DAF45 /* SignInPasswordView.swift */; };
 		DB0951082AF75050006DAF45 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0951072AF75050006DAF45 /* View.swift */; };
@@ -61,13 +58,11 @@
 		DB217C952AE17AAF0086E0D5 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = DB217C942AE17AAF0086E0D5 /* FirebaseStorage */; };
 		DB217C972AE17AAF0086E0D5 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = DB217C962AE17AAF0086E0D5 /* FirebaseStorageCombine-Community */; };
 		DB33FACF2AF84F360095E1BC /* TitleOnboadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB33FACE2AF84F360095E1BC /* TitleOnboadingView.swift */; };
-		DB33FAD12AF8524B0095E1BC /* PasswordInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB33FAD02AF8524B0095E1BC /* PasswordInputView.swift */; };
 		DB3FA5CB2ADF0F5800F83510 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB3FA5CA2ADF0F5800F83510 /* GoogleService-Info.plist */; };
 		DB4CA1272B047E4700C5FAE5 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CA1262B047E4700C5FAE5 /* Encodable.swift */; };
 		DB4CA1292B047E6200C5FAE5 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4CA1282B047E6200C5FAE5 /* Decodable.swift */; };
 		DB52114A2AE35953000AD8EE /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5211492AE35953000AD8EE /* CardListView.swift */; };
 		DB52114D2AE384BC000AD8EE /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB52114C2AE384BC000AD8EE /* DetailsView.swift */; };
-		DB75A8FC2ADAF9DC002CAF16 /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB75A8FB2ADAF9DC002CAF16 /* ShoppingList.swift */; };
 		DB75A9022ADB0F0F002CAF16 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = DB75A9012ADB0F0F002CAF16 /* FirebaseAnalytics */; };
 		DB75A9042ADB0F0F002CAF16 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = DB75A9032ADB0F0F002CAF16 /* FirebaseAnalyticsOnDeviceConversion */; };
 		DB75A9062ADB0F0F002CAF16 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DB75A9052ADB0F0F002CAF16 /* FirebaseAnalyticsSwift */; };
@@ -104,25 +99,20 @@
 		DB03F5632AD718A600548166 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DB03F5652AD718A700548166 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB03F5682AD718A700548166 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		DB03F56D2AD718A700548166 /* MarketTextToList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MarketTextToList.xcdatamodel; sourceTree = "<group>"; };
 		DB03F5772AD71DA100548166 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		DB0950F12AF737AF006DAF45 /* FirestoreOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreOnboarding.swift; sourceTree = "<group>"; };
-		DB0950F32AF73E4D006DAF45 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
-		DB0950F52AF745DD006DAF45 /* CPData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPData.swift; sourceTree = "<group>"; };
 		DB0950F92AF746A3006DAF45 /* CountryNumbers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CountryNumbers.json; sourceTree = "<group>"; };
-		DB0950FD2AF74742006DAF45 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		DB0950FD2AF74742006DAF45 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		DB0951002AF74797006DAF45 /* PhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberView.swift; sourceTree = "<group>"; };
 		DB0951052AF74B29006DAF45 /* SignInPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPasswordView.swift; sourceTree = "<group>"; };
 		DB0951072AF75050006DAF45 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		DB09510A2AF750D0006DAF45 /* OnboardingButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingButtonStyle.swift; sourceTree = "<group>"; };
 		DB33FACE2AF84F360095E1BC /* TitleOnboadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleOnboadingView.swift; sourceTree = "<group>"; };
-		DB33FAD02AF8524B0095E1BC /* PasswordInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordInputView.swift; sourceTree = "<group>"; };
 		DB3FA5CA2ADF0F5800F83510 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB4CA1262B047E4700C5FAE5 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		DB4CA1282B047E6200C5FAE5 /* Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decodable.swift; sourceTree = "<group>"; };
 		DB5211492AE35953000AD8EE /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
 		DB52114C2AE384BC000AD8EE /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
-		DB75A8FB2ADAF9DC002CAF16 /* ShoppingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
 		DB9DB07E2ADA2A99004BC0B4 /* FirestoreShoppingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreShoppingList.swift; sourceTree = "<group>"; };
 		DBAF8A5A2AE4ADA40051A4CD /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		DBC2CDC42AD999E600A49021 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -226,12 +216,10 @@
 				DB0950FB2AF7471E006DAF45 /* Extensions */,
 				DB0950F72AF74601006DAF45 /* Resources */,
 				DBC2CDCD2AD9A90D00A49021 /* Services */,
-				DB03F5752AD71B8C00548166 /* Models */,
 				DB03F5742AD71B3600548166 /* Views */,
 				DB03F5612AD718A600548166 /* MarketTextToListApp.swift */,
 				DB03F5652AD718A700548166 /* Assets.xcassets */,
 				DB3FA5CA2ADF0F5800F83510 /* GoogleService-Info.plist */,
-				DB03F56C2AD718A700548166 /* MarketTextToList.xcdatamodeld */,
 				DB03F5672AD718A700548166 /* Preview Content */,
 			);
 			path = MarketTextToList;
@@ -248,7 +236,6 @@
 		DB03F5742AD71B3600548166 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DB0951092AF750B3006DAF45 /* Components */,
 				DB742D6A2AF73102001084E9 /* Onboarding */,
 				DB52114B2AE384A9000AD8EE /* DetailsView */,
 				DBC2CDC62AD9A13100A49021 /* NewPurchases */,
@@ -257,16 +244,6 @@
 				DB03F5632AD718A600548166 /* ContentView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		DB03F5752AD71B8C00548166 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				DB75A8FB2ADAF9DC002CAF16 /* ShoppingList.swift */,
-				DB0950F32AF73E4D006DAF45 /* Onboarding.swift */,
-				DB0950F52AF745DD006DAF45 /* CPData.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		DB0950F72AF74601006DAF45 /* Resources */ = {
@@ -280,7 +257,7 @@
 		DB0950FB2AF7471E006DAF45 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				DB0950FD2AF74742006DAF45 /* Decoder.swift */,
+				DB0950FD2AF74742006DAF45 /* Bundle.swift */,
 				DB0951072AF75050006DAF45 /* View.swift */,
 				DB4CA1262B047E4700C5FAE5 /* Encodable.swift */,
 				DB4CA1282B047E6200C5FAE5 /* Decodable.swift */,
@@ -288,19 +265,11 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		DB0951092AF750B3006DAF45 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				DB09510A2AF750D0006DAF45 /* OnboardingButtonStyle.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		DB33FACB2AF84E810095E1BC /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DB09510A2AF750D0006DAF45 /* OnboardingButtonStyle.swift */,
 				DB33FACE2AF84F360095E1BC /* TitleOnboadingView.swift */,
-				DB33FAD02AF8524B0095E1BC /* PasswordInputView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -527,20 +496,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB0950F62AF745DD006DAF45 /* CPData.swift in Sources */,
 				DBC2CDCC2AD9A75A00A49021 /* CameraScannerViewController.swift in Sources */,
 				DBAF8A5B2AE4ADA40051A4CD /* MapView.swift in Sources */,
 				DB4CA1292B047E6200C5FAE5 /* Decodable.swift in Sources */,
 				DB4CA1272B047E4700C5FAE5 /* Encodable.swift in Sources */,
-				DB0950FE2AF74742006DAF45 /* Decoder.swift in Sources */,
+				DB0950FE2AF74742006DAF45 /* Bundle.swift in Sources */,
 				DBC2CDC52AD999E600A49021 /* SettingsView.swift in Sources */,
 				DB9DB07F2ADA2A99004BC0B4 /* FirestoreShoppingList.swift in Sources */,
 				DB0951012AF74797006DAF45 /* PhoneNumberView.swift in Sources */,
 				DBC2CDC82AD9A14E00A49021 /* NewPurchases.swift in Sources */,
 				DBC2CDCA2AD9A5C400A49021 /* CameraScannerView.swift in Sources */,
-				DB03F56E2AD718A700548166 /* MarketTextToList.xcdatamodeld in Sources */,
-				DB0950F42AF73E4E006DAF45 /* Onboarding.swift in Sources */,
-				DB75A8FC2ADAF9DC002CAF16 /* ShoppingList.swift in Sources */,
 				DBCF458E2B16A40100307464 /* Prefs.swift in Sources */,
 				DB03F5782AD71DA100548166 /* ListView.swift in Sources */,
 				DBC2CDD02AD9B94B00A49021 /* NewPurchasesForm.swift in Sources */,
@@ -551,7 +516,6 @@
 				DB52114D2AE384BC000AD8EE /* DetailsView.swift in Sources */,
 				DB0950F22AF737AF006DAF45 /* FirestoreOnboarding.swift in Sources */,
 				DB52114A2AE35953000AD8EE /* CardListView.swift in Sources */,
-				DB33FAD12AF8524B0095E1BC /* PasswordInputView.swift in Sources */,
 				DB0951082AF75050006DAF45 /* View.swift in Sources */,
 				DB0951062AF74B29006DAF45 /* SignInPasswordView.swift in Sources */,
 			);
@@ -1067,19 +1031,6 @@
 			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		DB03F56C2AD718A700548166 /* MarketTextToList.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				DB03F56D2AD718A700548166 /* MarketTextToList.xcdatamodel */,
-			);
-			currentVersion = DB03F56D2AD718A700548166 /* MarketTextToList.xcdatamodel */;
-			path = MarketTextToList.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = DB03F5562AD718A600548166 /* Project object */;
 }

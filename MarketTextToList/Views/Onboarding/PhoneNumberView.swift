@@ -7,6 +7,20 @@
 
 import SwiftUI
 import Combine
+import CoreData
+
+struct CPData: Codable, Identifiable {
+    let id: String
+    let name: String
+    let flag: String
+    let code: String
+    let dial_code: String
+    let pattern: String
+    let limit: Int
+    
+    static let allCountry: [CPData] = Bundle.main.decode("CountryNumbers.json")
+    static let example = allCountry[0]
+}
 
 struct PhoneNumberView: View {
     @State var presentSheet = false
@@ -21,7 +35,7 @@ struct PhoneNumberView: View {
     
     @State private var searchCountry: String = ""
     
-    private let countries: [CPData] = Bundle.main.decode("CountryNumbers.json")
+    private let countries: [CPData] = CPData.allCountry
     
     var body: some View {
         GeometryReader { geo in
