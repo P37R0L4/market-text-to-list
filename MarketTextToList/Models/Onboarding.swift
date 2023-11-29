@@ -7,6 +7,8 @@
 
 import Foundation
 
-struct SignInLogin: Hashable, Codable {
+struct Onboarding: Codable {
     let lists: [String]
+    let name: String
+    let password: String
 }

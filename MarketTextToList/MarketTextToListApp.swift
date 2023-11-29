@@ -10,7 +10,6 @@ import Firebase
 
 @main
 struct MarketTextToListApp: App {
-    @StateObject var firestoreManager = FirestoreManager()
     
     init() {
         FirebaseApp.configure()
@@ -18,8 +17,7 @@ struct MarketTextToListApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(firestoreManager)
+            PhoneNumberView()
         }
     }
 }

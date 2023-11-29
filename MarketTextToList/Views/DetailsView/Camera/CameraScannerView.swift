@@ -23,10 +23,8 @@ struct CameraScannerView: View {
             )
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
+                    Button("Cancel") {
                         self.presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        Text("Cancel")
                     }
                 }
             }

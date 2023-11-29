@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @State var pageIndex: OnboardingIndex
     @State var password: String = ""
     @State var completePhoneNumber: String = ""
     
@@ -18,8 +17,7 @@ struct OnboardingView: View {
         NavigationStack {
             TabView(selection: .constant(tabIndex), content:  {
                 PhoneNumberView(
-                    completePhoneNumber: $completePhoneNumber,
-                    pageIndex: $pageIndex
+                    completePhoneNumber: $completePhoneNumber
                 )
                 .tabItem {}
                 .tag(0)
@@ -27,7 +25,6 @@ struct OnboardingView: View {
                 SignInPasswordView(
                     password: $password,
                     completePhoneNumber: $completePhoneNumber,
-                    pageIndex: $pageIndex,
                     showHomeView: $showHomeView
                 )
                 .tabItem {}
@@ -37,23 +34,19 @@ struct OnboardingView: View {
             .transition(.slide)
             .onAppear {
                 guard let storagePhone = UserDefaults.standard.string(forKey: "completePhoneNumber") else {return}
+                
                 guard let password = UserDefaults.standard.string(forKey: "password") else {return}
+                
+                if storagePhone != "" && password != "" {
+                    showHomeView = true
+                }
             }
             
             NavigationLink(destination: ContentView(), isActive: $showHomeView) { }
         }
     }
-    
-    var tabIndex: Int {
-        switch pageIndex {
-        case .phone:
-            return 0
-        case .password:
-            return 1
-        }
-    }
 }
 
 #Preview {
-    OnboardingView(pageIndex: .phone)
+    OnboardingView()
 }

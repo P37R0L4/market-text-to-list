@@ -1,5 +1,5 @@
 //
-//  ShoppingCardModel.swift
+//  ShoppingList.swift
 //  MarketTextToList
 //
 //  Created by Lucas Petrola on 14/10/23.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Items: Hashable, Codable {
+struct Items: Codable {
     let item: String
     let selected: Bool
 }
 
-struct ShoppingCard: Hashable, Codable {
+struct ShoppingList: Codable {
     let documentID: String
     let title: String
     let data: Date

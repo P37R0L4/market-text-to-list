@@ -11,8 +11,6 @@ import Firebase
 struct CardListView: View {
     var title: String
     var data: Date
-    var firstPurchase: Bool
-    var shareWith: String
     var isFavorite: Bool
     
     var body: some View {
@@ -26,18 +24,15 @@ struct CardListView: View {
             
             Spacer()
             Image(systemName: isFavorite ? "star.fill" : "star")
-                .foregroundColor(isFavorite ? .yellow : .black)
-            
+                .foregroundColor(isFavorite ? .yellow : .black)   
         }
     }
 }
 
 #Preview {
     CardListView(
-        title: "Churrasco com as putas",
+        title: "Compras no pirateBay",
         data: Date(),
-        firstPurchase: false,
-        shareWith: "all",
         isFavorite: false
     )
 }

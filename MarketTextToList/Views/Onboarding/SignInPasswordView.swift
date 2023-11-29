@@ -8,45 +8,58 @@
 import SwiftUI
 import Combine
 
-struct SignInPasswordView: View {    
-    @Binding var password: String
+struct SignInPasswordView: View {
+    @State var password: String = ""
+    @State var showHomeView: Bool = false
+    @State var userData: Onboarding!
     @Binding var completePhoneNumber: String
-    @Binding var pageIndex: OnboardingIndex
-    
-    @Binding var showHomeView: Bool
     
     var body: some View {
-        GeometryReader { geo in
-            let hasHomeIndicator = geo.safeAreaInsets.bottom > 0
-            
-            VStack {
-                TitleOnboadingView(
-                    hasHomeIndicator: hasHomeIndicator,
-                    text: "Confirm your password"
-                )
+        NavigationStack {
+            GeometryReader { geo in
+                let hasHomeIndicator = geo.safeAreaInsets.bottom > 0
                 
-                PasswordInputView(text: $password)
-                ConfirmButtonView(
-                    completePhoneNumber: completePhoneNumber,
-                    showHomeView: $showHomeView,
-                    password: $password
-                )
-                
-                Spacer()
-            }
-            .padding()
-            .onTapGesture {
-                hideKeyboard()
+                VStack {
+                    TitleOnboadingView(
+                        hasHomeIndicator: hasHomeIndicator,
+                        text: "Confirm your password"
+                    )
+                    
+                    PasswordInputView(text: $password)
+                    
+                    Button {
+                        handleLogin()
+                    } label: {
+                        Text("Submit")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(OnboardingButtonStyle())
+                    .disableWithOpacity(password.count < 1)
+                    
+                    Spacer()
+                }
+                .padding()
             }
         }
+        .navigationDestination(isPresented: $showHomeView) {
+            ContentView()
+        }
+    }
+    
+    func handleLogin () {
+        FirestoreOnboarding()
+            .fetchSignIn(
+                number: completePhoneNumber,
+                password: password
+            ) { user in
+                if user.name != "error" {
+                    Prefs.shared.sharedPhoneNumber = completePhoneNumber
+                    showHomeView = true
+                }
+            }
     }
 }
 
 #Preview {
-    SignInPasswordView(
-        password: .constant(""),
-        completePhoneNumber: .constant(""),
-        pageIndex: .constant(.password),
-        showHomeView: .constant(false)
-    )
+    SignInPasswordView(completePhoneNumber: .constant(""))
 }

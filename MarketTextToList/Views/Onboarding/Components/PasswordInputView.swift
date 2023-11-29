@@ -32,23 +32,7 @@ struct PasswordInputView: View {
         .keyboardType(.numberPad)
         .padding(.top, 20)
         .padding(.bottom, 15)
-    }
-    
-    var backgroundColor: Color {
-        if colorScheme == .dark {
-            return Color(.systemGray5)
-        } else {
-            return Color(.systemGray6)
-        }
-    }
-    
-    var foregroundColor: Color {
-        if colorScheme == .dark {
-            return Color(.white)
-        } else {
-            return Color(.black)
-        }
-    }
+    }       
 }
 
 #Preview {

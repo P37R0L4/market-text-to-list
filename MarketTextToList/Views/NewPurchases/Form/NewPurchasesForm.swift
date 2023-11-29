@@ -16,26 +16,18 @@ struct NewPurchasesForm: View {
     
     @State private var showAddShoppngList = false
     @State private var addShoppingListText = ""
-    
     @State private var shoppingList: [String] = []
+    
+    @State private var shareWith: ShareWith = .all
     
     enum ShareWith: String, CaseIterable, Identifiable {
         case all, friends, me
         var id: Self {self}
     }
     
-    @State private var shareWith: ShareWith = .all
-    
     var formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
-        
-        return formatter
-    }()
-    
-    var intFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
         
         return formatter
     }()
@@ -46,19 +38,12 @@ struct NewPurchasesForm: View {
                 TextField("Market name", text: $marketName)
                 Toggle("First purchase here?", isOn: $firstPurchase)
                 Toggle("Share market localization?", isOn: $shareLocalization)
-                
-                Picker("Share with", selection: $shareWith) {
-                    Text("All").tag(ShareWith.all)
-                    Text("Only my contacts").tag(ShareWith.friends)
-                    Text("Only me").tag(ShareWith.me)
-                }
             }
             
             Section(header: Text("How much you spend here?")) {
                 TextField("$0", value: $amount, formatter: formatter)
                     .keyboardType(.decimalPad)
             }
-            
             
             Section {
                 List {

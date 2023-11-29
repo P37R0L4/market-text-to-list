@@ -11,13 +11,13 @@ struct OnboardingSeccondaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         
         ZStack {
-            RoundedRectangle(cornerRadius: 10, style: .continuous )
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
                 .frame(height: 49)
-                .foregroundColor(Color(.systemGray))
+                .foregroundColor(Color(.systemGray5))
             
             configuration.label
                 .fontWeight(.semibold)
-                .foregroundColor(Color(.white))
+                .foregroundColor(Color(.black))
         }
     }
 }

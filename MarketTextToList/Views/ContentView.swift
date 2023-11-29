@@ -13,7 +13,7 @@ struct ContentView: View {
         TabView {
             ListView()
                 .tabItem {
-                    Label("List", systemImage: "list.bullet.clipboard")
+                    Label("Shopping List", systemImage: "list.bullet.clipboard")
                 }
             
             NewPurchases()
@@ -26,10 +26,10 @@ struct ContentView: View {
                     Label("Settings", systemImage: "gear")
                 }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 #Preview {
     ContentView()
-        .environmentObject(FirestoreManager())
 }

@@ -10,19 +10,18 @@ import Combine
 
 struct PhoneNumberView: View {
     @State var presentSheet = false
-    @State var countryCode : String = "+55"
+    @State var countryCode: String = "+55"
     @State var mobPhoneNumber: String = ""
-    @State var countryFlag : String = "🇧🇷"
-    @State var countryPattern : String = "## # ### ####"
-    @State var countryLimit : Int = 17
+    @State var countryFlag: String = "🇧🇷"
+    @State var countryPattern: String = "## # #### ####"
+    @State var countryLimit: Int = 17
+    @State var pushToPassword: Bool = false
+    @State var showHomeView: Bool = false
+    @State var completePhoneNumber: String = ""
+    
     @State private var searchCountry: String = ""
-    @Environment(\.colorScheme) var colorScheme
-    @FocusState private var keyIsFocused: Bool
     
-    @Binding var completePhoneNumber: String
-    @Binding var pushToPassword: Bool = false
-    
-    let counrties: [CPData] = Bundle.main.decode("CountryNumbers.json")
+    private let countries: [CPData] = Bundle.main.decode("CountryNumbers.json")
     
     var body: some View {
         GeometryReader { geo in
@@ -38,7 +37,6 @@ struct PhoneNumberView: View {
                     HStack {
                         Button {
                             presentSheet = true
-                            keyIsFocused = false
                         } label: {
                             Text("\(countryFlag) \(countryCode)")
                                 .padding(10)
@@ -52,33 +50,39 @@ struct PhoneNumberView: View {
                                 Text("Phone number")
                                     .foregroundColor(.secondary)
                             }
-                            .focused($keyIsFocused)
                             .keyboardType(.phonePad)
-                            .onReceive(Just(mobPhoneNumber)) { _ in
-                                applyPatternOnNumbers(&mobPhoneNumber, pattern: countryPattern, replacementCharacter: "#")
-                            }
                             .padding(10)
                             .frame(minWidth: 80, minHeight: 47)
                             .background(backgroundColor, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+                            .onReceive(Just(mobPhoneNumber)) { _ in
+                                applyPatternOnPhoneNumbers(&mobPhoneNumber, pattern: countryPattern, replacementCharacter: "#")
+                            }
                     }
                     .padding(.top, 20)
                     .padding(.bottom, 15)
                     
-                    Button {
+                    Button("Next") {
                         buttonAction()
-                    } label: {
-                        Text("Next")
                     }
                     .disableWithOpacity(mobPhoneNumber.count < 1)
                     .buttonStyle(OnboardingButtonStyle())
                 }
-                .animation(.easeInOut(duration: 0.6), value: keyIsFocused)
+                .navigationDestination(isPresented: $pushToPassword) {
+                    SignInPasswordView(completePhoneNumber: $completePhoneNumber)
+                }
+                .navigationDestination(isPresented: $showHomeView) {
+                    ContentView()
+                }
                 .padding(.horizontal)
                 
                 Spacer()
             }
-            .onTapGesture {
-                hideKeyboard()
+            .onAppear {
+                let userPhone = Prefs.shared.sharedPhoneNumber
+                
+                if userPhone != nil {
+                    showHomeView = true
+                }
             }
             .sheet(isPresented: $presentSheet) {
                 NavigationView {
@@ -108,8 +112,6 @@ struct PhoneNumberView: View {
             .presentationDetents([.medium, .large])
         }
         .ignoresSafeArea(.keyboard)
-        
-        
     }
     
     func buttonAction () {
@@ -121,55 +123,14 @@ struct PhoneNumberView: View {
     
     var filteredResorts: [CPData] {
         if searchCountry.isEmpty {
-            return counrties
+            return countries
         } else {
-            return counrties.filter { $0.name.contains(searchCountry) }
+            return countries.filter { $0.name.contains(searchCountry) }
         }
-    }
-    
-    var backgroundColor: Color {
-        if colorScheme == .dark {
-            return Color(.systemGray5)
-        } else {
-            return Color(.systemGray6)
-        }
-    }
-    
-    func applyPatternOnNumbers(_ stringvar: inout String, pattern: String, replacementCharacter: Character) {
-        var pureNumber = stringvar.replacingOccurrences( of: "[^0-9]", with: "", options: .regularExpression)
-        
-        for index in 0 ..< pattern.count {
-            guard index < pureNumber.count else {
-                stringvar = pureNumber
-                return
-            }
-            let stringIndex = String.Index(utf16Offset: index, in: pattern)
-            let patternCharacter = pattern[stringIndex]
-            guard patternCharacter != replacementCharacter else { continue }
-            pureNumber.insert(patternCharacter, at: stringIndex)
-        }
-        stringvar = pureNumber
     }
 }
 
-struct PhoneNumberView_Previews: PreviewProvider {
-    static var previews: some View {
-        PhoneNumberView(
-            countryCode: "+55",
-            countryFlag: "🇧🇷",
-            countryPattern: "## # #### ####",
-            countryLimit: 17,
-            completePhoneNumber: .constant("")
-        )
+#Preview {
+    PhoneNumberView()
         .preferredColorScheme(.dark)
-        
-        PhoneNumberView(
-            countryCode: "+55",
-            countryFlag: "🇧🇷",
-            countryPattern: "## # #### ####",
-            countryLimit: 17,
-            completePhoneNumber: .constant("")
-        )
-        .preferredColorScheme(.light)
-    }
 }

@@ -14,8 +14,6 @@ struct DetailsView: View {
     @State private var showCameraScannerView = false
     @State private var isDeviceCapacity = false
     
-    @ObservedObject var firestoreManager = FirestoreManager()
-    
     var title: String
     var arrItems: [Items]
     var isFavorite: Bool
@@ -27,10 +25,8 @@ struct DetailsView: View {
                 ForEach(arrItems, id: \.item) { item in
                     Text(item.item)
                 }
-                .onDelete(perform: { indexSet in
-                    
-                })
             }
+            .listStyle(.inset)
             Text(scanResults)
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -51,7 +47,7 @@ struct DetailsView: View {
             
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    firestoreManager.update(uid: documentID, data: ["isFavorite": !isFavorite])
+                    FirestoreShoppingList().update(uid: documentID, data: ["isFavorite": !isFavorite])
                 } label: {
                     Image(systemName: isFavorite ? "star.fill" : "star")
                         .foregroundColor(isFavorite ? .yellow : .accentColor)
@@ -68,16 +64,20 @@ struct DetailsView: View {
                 scanResult: $scanResults
             )
         }
-        .alert("Scanner Unavailable", isPresented: $showDeviceNotCapacityAlert, actions: {})
+        .alert(
+            "Scanner Unavailable",
+            isPresented: $showDeviceNotCapacityAlert,
+            actions: {}
+        )
     }
 }
 
 #Preview {
     DetailsView(
-        title: "Compras em app",
+        title: "Fichas de jogo do bicho",
         arrItems: [
-            Items(item: "Porra de macaco", selected: false),
-            Items(item: "Cu de travesti", selected: false),
+            Items(item: "Ficha do macaco pro donizete", selected: false),
+            Items(item: "Pavão pro cleito", selected: false),
         ],
         isFavorite: false,
         documentID: ""

@@ -14,11 +14,9 @@ struct NewPurchases: View {
                 NewPurchasesForm()
             }
             .navigationTitle("New Purchases")
-            .toolbar {                
+            .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button {} label: {
-                        Text("Done")
-                    }
+                    Button("Done") {}
                 }
             }
         }
