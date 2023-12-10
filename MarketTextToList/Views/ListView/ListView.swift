@@ -10,7 +10,15 @@ import SwiftUI
 struct ListView: View {
     @State private var search: String = ""
     @State var showFavoritesOnly: Bool = false
-    @State var phone: String = ""
+    @State var lists = [Lists]()
+    
+    var filteredList: [Lists] {
+        search == ""
+        ? lists.filter { lists in
+            (!showFavoritesOnly || lists.isFavorite)
+        }
+        : lists.filter {$0.title.lowercased().contains(search.lowercased())}
+    }
     
     var body: some View {
         NavigationView {
@@ -19,34 +27,40 @@ struct ListView: View {
                     Text("Show favorites")
                 }
                 
-                //                ForEach(0..<10, id: \.documentID) { shopping in
-                //                    NavigationLink {
-                //                        DetailsView(
-                //                            title: shopping.title,
-                //                            arrItems: shopping.items,
-                //                            isFavorite: shopping.isFavorite,
-                //                            documentID: shopping.documentID
-                //                        )
-                //                    } label: {
-                //                        CardListView(
-                //                            title: shopping.title,
-                //                            data: shopping.data,
-                //                            isFavorite: shopping.isFavorite
-                //                        )
-                //                    }
-                //                }
+                ForEach(filteredList) { itemList in
+                    NavigationLink {
+                        DetailsView(
+                            title: itemList.title,
+                            id: itemList.id,
+                            isFavorite: itemList.isFavorite
+                        )
+                    } label: {
+                        CardListView(
+                            title: itemList.title,
+                            data: itemList.data,
+                            isFavorite: itemList.isFavorite
+                        )
+                    }
+                }
             }
             .listStyle(.inset)
             .searchable(text: $search)
-            .navigationTitle("Shopping lists")
+            .navigationTitle("List")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     EditButton()
                 }
             }
             .onAppear {
-                guard let sharedPhoneNumber = Prefs.shared.sharedPhoneNumber else {return}
-                self.phone = sharedPhoneNumber
+                handleShoppingLists()
+            }
+        }
+    }
+    
+    func handleShoppingLists () {
+        if let sharedPhoneNumber = Prefs.shared.sharedPhoneNumber {
+            FirestoreOnboarding().fetchSignIn(number: sharedPhoneNumber) { onboardingData in
+                self.lists = onboardingData.lists
             }
         }
     }
@@ -54,5 +68,4 @@ struct ListView: View {
 
 #Preview {
     ListView()
-        .environmentObject(FirestoreOnboarding())
 }

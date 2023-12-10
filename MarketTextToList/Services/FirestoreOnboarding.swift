@@ -8,28 +8,44 @@
 import Foundation
 import Firebase
 
+struct Lists: Codable, Identifiable {
+    let id: String
+    let data: Date
+    let isFavorite: Bool
+    let title: String
+}
+
 struct OnboardingData: Codable {
-    let lists: [String]
+    let lists: [Lists]
     let name: String
     let password: String
 }
 
-class FirestoreOnboarding: ObservableObject {
-    func fetchSignIn(number: String, password: String, completion: @escaping (OnboardingData) -> ()) {
+class FirestoreOnboarding {
+    func fetchSignIn(number: String, password: String? = nil, completion: @escaping (OnboardingData) -> ()) {
         let db = Firestore.firestore()
-        let docRef = db.collection("Users").document(number)
-        let errorHandler: OnboardingData = OnboardingData(lists: [], name: "error", password: "")
+        let docRef = db.collection("Users")
+        let errorHandler: OnboardingData = OnboardingData(lists: [], name: "", password: "invalid")
         
-        docRef.getDocument(as: OnboardingData.self) { result in
-            switch result {
-            case .success(let user):
-                if password == user.password {
-                    completion(user)
-                } else {
-                    completion(errorHandler)
+        docRef.addSnapshotListener { snapshot, error in
+            if let snapshot = snapshot {
+                for document in snapshot.documents {
+                    do {
+                        let data = try document.data(as: OnboardingData.self)
+                        let documentID = document.documentID
+                        
+                        if documentID == number {
+                            if data.password == password || password == nil {
+                                completion(data)
+                            } else {
+                                completion(errorHandler)
+                            }
+                        }
+                    } catch {
+                        print("erro aqui: \(error)")
+                    }
+                    
                 }
-            case .failure(let error):
-                print("\(error)")
             }
         }
     }

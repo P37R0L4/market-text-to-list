@@ -7,23 +7,15 @@
 
 import SwiftUI
 
-struct NewPurchasesForm: View {
+struct NewListForm: View {
     @State private var marketName = ""
     @State private var amount: Double?
-    @State private var firstPurchase = false
-    @State private var shareLocalization = false
-    @State private var itemsNumber: String?
+    @State private var isFavorite = false
+    @State private var generateQRCode = false
     
-    @State private var showAddShoppngList = false
+    @State private var presentAdd = false
     @State private var addShoppingListText = ""
     @State private var shoppingList: [String] = []
-    
-    @State private var shareWith: ShareWith = .all
-    
-    enum ShareWith: String, CaseIterable, Identifiable {
-        case all, friends, me
-        var id: Self {self}
-    }
     
     var formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -35,9 +27,9 @@ struct NewPurchasesForm: View {
     var body: some View {
         Form {
             Section(header: Text("Market info")) {
-                TextField("Market name", text: $marketName)
-                Toggle("First purchase here?", isOn: $firstPurchase)
-                Toggle("Share market localization?", isOn: $shareLocalization)
+                TextField("Name list", text: $marketName)
+                Toggle("Set Favorite", isOn: $isFavorite)
+                Toggle("Generate QRCode", isOn: $generateQRCode)
             }
             
             Section(header: Text("How much you spend here?")) {
@@ -57,14 +49,14 @@ struct NewPurchasesForm: View {
                     Text("Add items to shoping list")
                     Spacer()
                     Button {
-                        self.showAddShoppngList = true
+                        self.presentAdd = true
                     } label: {
                         Image(systemName: "plus")
                     }
                 }
             }
         }
-        .alert("Add item to shopping list", isPresented: $showAddShoppngList) {
+        .alert("Add item to shopping list", isPresented: $presentAdd) {
             TextField("Enter the item here", text: $addShoppingListText)
             
             Button("Add", role: .destructive, action: {
@@ -87,5 +79,5 @@ struct NewPurchasesForm: View {
 }
 
 #Preview {
-    NewPurchasesForm()
+    NewListForm()
 }

@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct NewPurchases: View {
+struct NewList: View {
     var body: some View {
         NavigationView {
             VStack {
-                NewPurchasesForm()
+                NewListForm()
             }
-            .navigationTitle("New Purchases")
+            .navigationTitle("New list")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {}
@@ -24,5 +24,5 @@ struct NewPurchases: View {
 }
 
 #Preview {
-    NewPurchases()
+    NewList()
 }

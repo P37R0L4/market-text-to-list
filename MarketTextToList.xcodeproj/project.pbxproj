@@ -30,6 +30,7 @@
 		DB1040252ADA2FC1004B976F /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = DB1040242ADA2FC1004B976F /* FirebaseDatabase */; };
 		DB1040272ADA2FC1004B976F /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DB1040262ADA2FC1004B976F /* FirebaseDatabaseSwift */; };
 		DB1040292ADA2FC1004B976F /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = DB1040282ADA2FC1004B976F /* FirebaseDynamicLinks */; };
+		DB202BE72B252ADB0082C68B /* DetailListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB202BE62B252ADB0082C68B /* DetailListView.swift */; };
 		DB217C632AE17AAF0086E0D5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = DB217C622AE17AAF0086E0D5 /* FirebaseAnalytics */; };
 		DB217C652AE17AAF0086E0D5 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = DB217C642AE17AAF0086E0D5 /* FirebaseAnalyticsOnDeviceConversion */; };
 		DB217C672AE17AAF0086E0D5 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DB217C662AE17AAF0086E0D5 /* FirebaseAnalyticsSwift */; };
@@ -83,12 +84,11 @@
 		DB9DB0742ADA2134004BC0B4 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = DB9DB0732ADA2134004BC0B4 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		DB9DB0762ADA2134004BC0B4 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = DB9DB0752ADA2134004BC0B4 /* FirebaseAppCheck */; };
 		DB9DB07F2ADA2A99004BC0B4 /* FirestoreShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9DB07E2ADA2A99004BC0B4 /* FirestoreShoppingList.swift */; };
-		DBAF8A5B2AE4ADA40051A4CD /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAF8A5A2AE4ADA40051A4CD /* MapView.swift */; };
 		DBC2CDC52AD999E600A49021 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC2CDC42AD999E600A49021 /* SettingsView.swift */; };
-		DBC2CDC82AD9A14E00A49021 /* NewPurchases.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC2CDC72AD9A14E00A49021 /* NewPurchases.swift */; };
+		DBC2CDC82AD9A14E00A49021 /* NewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC2CDC72AD9A14E00A49021 /* NewList.swift */; };
 		DBC2CDCA2AD9A5C400A49021 /* CameraScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC2CDC92AD9A5C400A49021 /* CameraScannerView.swift */; };
 		DBC2CDCC2AD9A75A00A49021 /* CameraScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC2CDCB2AD9A75A00A49021 /* CameraScannerViewController.swift */; };
-		DBC2CDD02AD9B94B00A49021 /* NewPurchasesForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC2CDCF2AD9B94B00A49021 /* NewPurchasesForm.swift */; };
+		DBC2CDD02AD9B94B00A49021 /* NewListForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC2CDCF2AD9B94B00A49021 /* NewListForm.swift */; };
 		DBCF458E2B16A40100307464 /* Prefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCF458D2B16A40100307464 /* Prefs.swift */; };
 		DBFA0E6B2ADB445000883533 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DBFA0E6A2ADB445000883533 /* FirebaseFirestoreSwift */; };
 /* End PBXBuildFile section */
@@ -107,6 +107,7 @@
 		DB0951052AF74B29006DAF45 /* SignInPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPasswordView.swift; sourceTree = "<group>"; };
 		DB0951072AF75050006DAF45 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		DB09510A2AF750D0006DAF45 /* OnboardingButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingButtonStyle.swift; sourceTree = "<group>"; };
+		DB202BE62B252ADB0082C68B /* DetailListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListView.swift; sourceTree = "<group>"; };
 		DB33FACE2AF84F360095E1BC /* TitleOnboadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleOnboadingView.swift; sourceTree = "<group>"; };
 		DB3FA5CA2ADF0F5800F83510 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB4CA1262B047E4700C5FAE5 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
@@ -114,12 +115,11 @@
 		DB5211492AE35953000AD8EE /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
 		DB52114C2AE384BC000AD8EE /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		DB9DB07E2ADA2A99004BC0B4 /* FirestoreShoppingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreShoppingList.swift; sourceTree = "<group>"; };
-		DBAF8A5A2AE4ADA40051A4CD /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		DBC2CDC42AD999E600A49021 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		DBC2CDC72AD9A14E00A49021 /* NewPurchases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPurchases.swift; sourceTree = "<group>"; };
+		DBC2CDC72AD9A14E00A49021 /* NewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewList.swift; sourceTree = "<group>"; };
 		DBC2CDC92AD9A5C400A49021 /* CameraScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraScannerView.swift; sourceTree = "<group>"; };
 		DBC2CDCB2AD9A75A00A49021 /* CameraScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraScannerViewController.swift; sourceTree = "<group>"; };
-		DBC2CDCF2AD9B94B00A49021 /* NewPurchasesForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPurchasesForm.swift; sourceTree = "<group>"; };
+		DBC2CDCF2AD9B94B00A49021 /* NewListForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListForm.swift; sourceTree = "<group>"; };
 		DBCF458D2B16A40100307464 /* Prefs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prefs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -238,7 +238,7 @@
 			children = (
 				DB742D6A2AF73102001084E9 /* Onboarding */,
 				DB52114B2AE384A9000AD8EE /* DetailsView */,
-				DBC2CDC62AD9A13100A49021 /* NewPurchases */,
+				DBC2CDC62AD9A13100A49021 /* NewList */,
 				DBC2CDC32AD9997F00A49021 /* Settings */,
 				DBD9BC702AD75C6B0060085B /* ListView */,
 				DB03F5632AD718A600548166 /* ContentView.swift */,
@@ -286,7 +286,7 @@
 		DB4D000B2AD9C36F00A34819 /* Form */ = {
 			isa = PBXGroup;
 			children = (
-				DBC2CDCF2AD9B94B00A49021 /* NewPurchasesForm.swift */,
+				DBC2CDCF2AD9B94B00A49021 /* NewListForm.swift */,
 			);
 			path = Form;
 			sourceTree = "<group>";
@@ -296,7 +296,7 @@
 			children = (
 				DB4CA12A2B04960D00C5FAE5 /* Camera */,
 				DB52114C2AE384BC000AD8EE /* DetailsView.swift */,
-				DBAF8A5A2AE4ADA40051A4CD /* MapView.swift */,
+				DB202BE62B252ADB0082C68B /* DetailListView.swift */,
 			);
 			path = DetailsView;
 			sourceTree = "<group>";
@@ -326,13 +326,13 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		DBC2CDC62AD9A13100A49021 /* NewPurchases */ = {
+		DBC2CDC62AD9A13100A49021 /* NewList */ = {
 			isa = PBXGroup;
 			children = (
 				DB4D000B2AD9C36F00A34819 /* Form */,
-				DBC2CDC72AD9A14E00A49021 /* NewPurchases.swift */,
+				DBC2CDC72AD9A14E00A49021 /* NewList.swift */,
 			);
-			path = NewPurchases;
+			path = NewList;
 			sourceTree = "<group>";
 		};
 		DBC2CDCD2AD9A90D00A49021 /* Services */ = {
@@ -497,18 +497,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBC2CDCC2AD9A75A00A49021 /* CameraScannerViewController.swift in Sources */,
-				DBAF8A5B2AE4ADA40051A4CD /* MapView.swift in Sources */,
 				DB4CA1292B047E6200C5FAE5 /* Decodable.swift in Sources */,
 				DB4CA1272B047E4700C5FAE5 /* Encodable.swift in Sources */,
+				DB202BE72B252ADB0082C68B /* DetailListView.swift in Sources */,
 				DB0950FE2AF74742006DAF45 /* Bundle.swift in Sources */,
 				DBC2CDC52AD999E600A49021 /* SettingsView.swift in Sources */,
 				DB9DB07F2ADA2A99004BC0B4 /* FirestoreShoppingList.swift in Sources */,
 				DB0951012AF74797006DAF45 /* PhoneNumberView.swift in Sources */,
-				DBC2CDC82AD9A14E00A49021 /* NewPurchases.swift in Sources */,
+				DBC2CDC82AD9A14E00A49021 /* NewList.swift in Sources */,
 				DBC2CDCA2AD9A5C400A49021 /* CameraScannerView.swift in Sources */,
 				DBCF458E2B16A40100307464 /* Prefs.swift in Sources */,
 				DB03F5782AD71DA100548166 /* ListView.swift in Sources */,
-				DBC2CDD02AD9B94B00A49021 /* NewPurchasesForm.swift in Sources */,
+				DBC2CDD02AD9B94B00A49021 /* NewListForm.swift in Sources */,
 				DB09510B2AF750D0006DAF45 /* OnboardingButtonStyle.swift in Sources */,
 				DB33FACF2AF84F360095E1BC /* TitleOnboadingView.swift in Sources */,
 				DB03F5642AD718A600548166 /* ContentView.swift in Sources */,

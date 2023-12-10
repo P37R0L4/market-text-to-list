@@ -11,6 +11,7 @@ import Combine
 struct SignInPasswordView: View {
     @State var password: String = ""
     @State var showHomeView: Bool = false
+    @State var presentPasswordError: Bool = false
     @State var userData: OnboardingData!
     @Binding var completePhoneNumber: String
     
@@ -57,6 +58,9 @@ struct SignInPasswordView: View {
                     Spacer()
                 }
                 .padding()
+                .alert("Invalid password", isPresented: $presentPasswordError) {
+                    Button("Close") { }
+                }
             }
         }
         .navigationDestination(isPresented: $showHomeView) {
@@ -70,9 +74,11 @@ struct SignInPasswordView: View {
                 number: completePhoneNumber,
                 password: password
             ) { user in
-                if user.name != "error" {
+                if user.password != "invalid" {
                     Prefs.shared.sharedPhoneNumber = completePhoneNumber
                     showHomeView = true
+                } else {
+                    
                 }
             }
     }

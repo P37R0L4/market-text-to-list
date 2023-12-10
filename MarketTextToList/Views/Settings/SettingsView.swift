@@ -13,15 +13,6 @@ struct SettingsView: View {
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
                 .navigationTitle("Settings")
                 .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink {
-                            Image(systemName: "")
-                        } label: {
-                            Label("new", systemImage: "camera")
-                        }
-                    }
-                }
         }
     }
 }

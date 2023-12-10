@@ -16,7 +16,7 @@ struct ContentView: View {
                     Label("Shopping List", systemImage: "list.bullet.clipboard")
                 }
             
-            NewPurchases()
+            NewList()
                 .tabItem {
                     Label("New", systemImage: "square.and.pencil")
                 }

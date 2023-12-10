@@ -14,23 +14,40 @@ struct DetailsView: View {
     @State private var showCameraScannerView = false
     @State private var isDeviceCapacity = false
     
+    @State private var arrItems = [Items]()
+    @State private var search: String = ""
+    
     var title: String
-    var arrItems: [Items]
+    var id: String
     var isFavorite: Bool
-    var documentID: String
+    
+    var filteredItem: [Items] {
+        search != "" ? arrItems.filter {$0.item.lowercased().contains(search.lowercased())} : arrItems
+    }
     
     var body: some View {
         VStack {
             List {
-                ForEach(arrItems, id: \.item) { item in
-                    Text(item.item)
+                ForEach(filteredItem, id: \.item) { item in
+                    DetailListView(title: item.item, price: item.price)
+                        .strikethrough(item.selected)
+                        .swipeActions {
+                            Button("delete", role: .destructive) {
+                                
+                            }
+                            
+                            Button("Mark") {
+                                
+                            }
+                        }
                 }
             }
             .listStyle(.inset)
             Text(scanResults)
         }
-        .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(title)
+        .searchable(text: $search)
+        .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
@@ -47,15 +64,21 @@ struct DetailsView: View {
             
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    FirestoreShoppingList().update(uid: documentID, data: ["isFavorite": !isFavorite])
+                    FirestoreShoppingList().update(uid: id, data: ["isFavorite": !isFavorite])
                 } label: {
                     Image(systemName: isFavorite ? "star.fill" : "star")
                         .foregroundColor(isFavorite ? .yellow : .accentColor)
                 }
             }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                EditButton()
+            }
         }
         .onAppear {
             isDeviceCapacity = (DataScannerViewController.isSupported && DataScannerViewController.isAvailable)
+            
+            handleList()
         }
         .sheet(isPresented: $showCameraScannerView) {
             CameraScannerView(
@@ -70,16 +93,18 @@ struct DetailsView: View {
             actions: {}
         )
     }
+    
+    func handleList () {
+        FirestoreShoppingList().fetchShoppingList(document: id) { shoppingListData in
+            arrItems = shoppingListData.items
+        }
+    }
 }
 
 #Preview {
     DetailsView(
         title: "Fichas de jogo do bicho",
-        arrItems: [
-            Items(item: "Ficha do macaco pro donizete", selected: false),
-            Items(item: "Pavão pro cleito", selected: false),
-        ],
-        isFavorite: false,
-        documentID: ""
+        id: "",
+        isFavorite: false
     )
 }

@@ -14,28 +14,29 @@ import MapKit
 struct Items: Codable {
     let item: String
     let selected: Bool
+    let price: Int
 }
 
 struct ShoppingListData: Codable {
-    let documentID: String
-    let title: String
-    let data: Date
     var items: [Items]
     let amount: Int
-    let isFavorite: Bool
+    let owner: String
+    let shareWith: String
 }
 
 class FirestoreShoppingList {
     func fetchShoppingList(document: String, completion: @escaping (ShoppingListData) -> ()) {
         let db = Firestore.firestore()
-        let docRef = db.collection("Shopping").document(document)
+        let docRef = db.collection("Shopping")
         
-        docRef.getDocument(as: ShoppingListData.self) { result in
-            switch result {
-            case .success(let shoppingList):
-                completion(shoppingList)
-            case .failure(let error):
-                print("\(error)")
+        docRef.addSnapshotListener { snapshot, error in
+            if let snapshot = snapshot {
+                for snaphotDocument in snapshot.documents {
+                    if snaphotDocument.documentID == document {
+                        let data = try! snaphotDocument.data(as: ShoppingListData.self)
+                        completion(data)
+                    }
+                }
             }
         }
     }

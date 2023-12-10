@@ -15,16 +15,22 @@ struct CardListView: View {
     
     var body: some View {
         HStack {
+            Image(systemName: "star.fill")
+                .foregroundColor(.white)
+                .padding()
+                .background(isFavorite ? .yellow : .secondary)
+                .clipShape(Circle())
+            
             VStack(alignment: .leading) {
                 Text(title.capitalized)
+                    .font(.system(size: 20))
                     .bold()
                 
-                Text("\(data.getFormattedDate(format: "MMM d, yyyy"))")
+                Text(data.getFormattedDate(format: "MMM d, yyyy"))
+                    .font(.subheadline)
             }
             
             Spacer()
-            Image(systemName: isFavorite ? "star.fill" : "star")
-                .foregroundColor(isFavorite ? .yellow : .black)   
         }
     }
 }
